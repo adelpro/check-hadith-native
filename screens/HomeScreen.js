@@ -107,6 +107,7 @@ export const styles = ScaledSheet.create({
     alignItems: "center",
   },
   serachBarContainer: {
+    maxWidth: 800,
     flexDirection: "row",
     flexDirection: "row-reverse",
     alignItems: "center",

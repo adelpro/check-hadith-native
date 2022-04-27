@@ -1,67 +1,84 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Platform, TouchableOpacity, Text, Image } from "react-native";
+import { Platform, Pressable, Text } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import HomeScreen from "../screens/HomeScreen";
 import AboutScreen from "../screens/AboutScreen";
-export default function DrawerNavigator(font) {
+export default function DrawerNavigatorRight({ font }) {
   const Drawer = createDrawerNavigator();
   const defaultOptions = ({ navigation, route }) => ({
     headerRight: () => {
       return (
         <>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Pressable onPress={() => navigation.openDrawer()}>
             <Ionicons
               name={Platform.OS === "android" ? "md-menu" : "ios-menu"}
               size={32}
               color={"#000"}
               style={{ marginRight: 10 }}
             />
-          </TouchableOpacity>
-
+          </Pressable>
           <Text style={styles.headerRightTiteStyle}>{route.params.title}</Text>
         </>
       );
     },
-    headerStyle: {},
     headerLeftContainerStyle: { display: "none" },
     headerRightContainerStyle: {
       display: "flex",
+      justifyContent: "flex-start",
       flexDirection: "row-reverse",
-      justifyContent: "right",
       alignItems: "center",
       marginRight: 10,
     },
-
     headerTitleStyle: {
       display: "none",
-    },
-
-    headerTitleContainerStyle: {
-      backgroundColor: "green",
     },
     drawerPosition: "right",
     sceneContainerStyle: {
       flex: 1,
       width: "100%",
     },
+    drawerItemStyle: {
+      backgroundColor: "red",
+    },
   });
   return (
     <Drawer.Navigator screenOptions={defaultOptions}>
       <Drawer.Screen
         name="Home"
-        options={{ title: "الباحث في الحديث" }}
+        options={{
+          title: "الباحث في الحديث",
+          drawerIcon: ({ color, size, focuced }) => (
+            <Ionicons
+              name={focuced ? "home-outline" : "home"}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
         component={HomeScreen}
         initialParams={{
-          font: font,
+          font: { font },
           title: " الباحث في الحديث",
         }}
       />
       <Drawer.Screen
         name="About"
+        options={{
+          title: "حول البرنامج",
+          drawerIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={
+                focused ? "information-circle-outline" : "information-circle"
+              }
+              size={size}
+              color={color}
+            />
+          ),
+        }}
         component={AboutScreen}
         initialParams={{
-          font: font,
+          font: { font },
           title: "حول البرنامج",
         }}
       />
