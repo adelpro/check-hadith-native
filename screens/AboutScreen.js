@@ -1,7 +1,9 @@
 import { View, Text } from "react-native";
 
 export default function AboutScreen() {
-  <View>
-    <Text>About</Text>
-  </View>;
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>About us</Text>
+    </View>
+  );
 }

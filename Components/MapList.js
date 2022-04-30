@@ -1,10 +1,10 @@
 import { FlatList, View, Text, Share, Pressable } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import { Ionicons } from "@expo/vector-icons";
-import { v4 as uuidv4 } from "uuid";
+import uuid from "react-native-uuid";
 export default function MapList({ data }) {
   const dataWithKey = data.map((item) => {
-    return { key: uuidv4(), ...item };
+    return { key: uuid.v4(), ...item };
   });
   const onShare = async (message) => {
     try {
@@ -67,10 +67,14 @@ export const styles = ScaledSheet.create({
     margin: 10,
     padding: 10,
     shadowColor: "#000",
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 1,
-    shadowRadius: 3,
-    elevation: 8,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+
+    elevation: 7,
   },
   underline: {
     fontSize: "10@s",

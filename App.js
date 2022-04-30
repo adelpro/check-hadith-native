@@ -9,10 +9,9 @@ import {
   Tajawal_500Medium,
   Tajawal_800ExtraBold,
 } from "@expo-google-fonts/tajawal";
-import DrawerNavigatorRight from "./components/DrawerNavigatorRight";
-import CustomDrawerNavigator from "./components/CustomDrawerNavigator";
+import CustomDrawerNavigatorRight from "./components/CustomDrawerNavigatorRight";
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  const [fontsLoaded] = useFonts({
     Tajawal_300Light,
     Tajawal_400Regular,
     Tajawal_500Medium,
@@ -21,12 +20,12 @@ export default function App() {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+
   return (
     <>
       <StatusBar style="auto" />
       <NavigationContainer>
-        {/* <DrawerNavigatorRight font={TajawalFontFamily} /> */}
-        <CustomDrawerNavigator font={TajawalFontFamily} />
+        <CustomDrawerNavigatorRight font={TajawalFontFamily} />
       </NavigationContainer>
     </>
   );

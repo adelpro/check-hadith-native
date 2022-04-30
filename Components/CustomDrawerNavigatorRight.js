@@ -1,10 +1,33 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { Platform, Pressable, Text } from "react-native";
-import { ScaledSheet } from "react-native-size-matters";
+import { Platform, Pressable, View, Text, Image } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import AboutScreen from "../screens/AboutScreen";
-export default function DrawerNavigatorRight({ font }) {
+import { bleuPalette } from "../colors";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+} from "@react-navigation/drawer";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { ScaledSheet } from "react-native-size-matters";
+const CustomDrawerContent = (props) => {
+  return (
+    <View style={{ flex: 1 }}>
+      <DrawerContentScrollView {...props}>
+        <View style={styles.imageContainer}>
+          <Image
+            source={require("../assets/adaptive-icon.png")}
+            style={styles.logoImage}
+          />
+        </View>
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
+      <View>
+        <Text>AAA</Text>
+      </View>
+    </View>
+  );
+};
+export default function CustomDrawerNavigatorRight(font) {
   const Drawer = createDrawerNavigator();
   const defaultOptions = ({ navigation, route }) => ({
     headerRight: () => {
@@ -39,20 +62,37 @@ export default function DrawerNavigatorRight({ font }) {
       width: "100%",
     },
     drawerItemStyle: {
-      backgroundColor: "red",
+      flexDirection: "row-reverse",
+      justifyContent: "flex-start",
     },
+
+    drawerActiveTintColor: bleuPalette.bleu100,
+    drawerInactiveTintColor: bleuPalette.bleu20,
   });
   return (
-    <Drawer.Navigator screenOptions={defaultOptions}>
+    <Drawer.Navigator
+      screenOptions={defaultOptions}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen
         name="Home"
         options={{
           title: "الباحث في الحديث",
           drawerIcon: ({ color, size, focuced }) => (
             <Ionicons
-              name={focuced ? "home-outline" : "home"}
+              name={
+                focuced ? "home" : "home-outline"
+
+                /* Platform.OS === "android"
+                    ? "md-home"
+                    : "ios-home"
+                  : Platform.OS === "android"
+                  ? "md-home-outline"
+                  : "ios-home-outline" */
+              }
               size={size}
               color={color}
+              style={styles.screenIconStyle}
             />
           ),
         }}
@@ -69,10 +109,11 @@ export default function DrawerNavigatorRight({ font }) {
           drawerIcon: ({ color, size, focused }) => (
             <Ionicons
               name={
-                focused ? "information-circle-outline" : "information-circle"
+                focused ? "information-circle" : "information-circle-outline"
               }
               size={size}
               color={color}
+              style={styles.screenIconStyle}
             />
           ),
         }}
@@ -92,8 +133,26 @@ const styles = ScaledSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  screenIconStyle: {
+    position: "absolute",
+    alignSelf: "center",
+    right: 10,
+  },
   headerRightTiteStyle: {
     fontFamily: "Tajawal_500Medium",
     fontSize: 24,
+  },
+  imageContainer: {
+    marginVertical: "20@vs",
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  logoImage: {
+    width: 150,
+    height: 150,
+    borderColor: "#ccc",
+    borderRadius: 75,
+    resizeMode: "stretch",
   },
 });
