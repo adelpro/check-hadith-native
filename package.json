@@ -28,7 +28,20 @@
     "react-native-size-matters": "^0.4.0",
     "react-native-uuid": "^2.0.1",
     "react-native-web": "0.17.1",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "workbox-webpack-plugin": "^6.1.5",
+    "workbox-background-sync": "^6.1.5",
+    "workbox-broadcast-update": "^6.1.5",
+    "workbox-cacheable-response": "^6.1.5",
+    "workbox-core": "^6.1.5",
+    "workbox-expiration": "^6.1.5",
+    "workbox-google-analytics": "^6.1.5",
+    "workbox-navigation-preload": "^6.1.5",
+    "workbox-precaching": "^6.1.5",
+    "workbox-range-requests": "^6.1.5",
+    "workbox-routing": "^6.1.5",
+    "workbox-strategies": "^6.1.5",
+    "workbox-streams": "^6.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

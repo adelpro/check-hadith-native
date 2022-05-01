@@ -45,7 +45,7 @@ export default function MapList({ data }) {
             <Pressable
               onPress={() =>
                 onShare(
-                  `${item.hadith}\nالراوي: ${item.el_rawi}\nالمحدث: ${item.el_mohdith}\nالمصدر: ${item.source}\nرفم الصفحة: ${item.number_or_page}\nدرجة الحديث: ${item.grade}`
+                  `${item.hadith}\nالراوي: ${item.el_rawi}\nالمحدث: ${item.el_mohdith}\nالمصدر: ${item.source}\nرفم الصفحة: ${item.number_or_page}\nدرجة الحديث: ${item.grade}\n`
                 )
               }
             >

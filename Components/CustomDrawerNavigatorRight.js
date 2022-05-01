@@ -59,6 +59,7 @@ const CustomDrawerContent = (props) => {
             }}
           />
         </View>
+        <Text>V1.3 build 0001</Text>
       </Pressable>
     </View>
   );
