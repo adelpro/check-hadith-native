@@ -1,29 +1,20 @@
-import { FlatList, View, Text, Share, Pressable } from "react-native";
+import { FlatList, Share, Text, Pressable, View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import { Ionicons } from "@expo/vector-icons";
 import uuid from "react-native-uuid";
+import { bleuPalette } from "../colors";
 export default function MapList({ data }) {
   const dataWithKey = data.map((item) => {
     return { key: uuid.v4(), ...item };
   });
-  const onShare = async (message) => {
-    try {
-      const result = await Share.share({
-        message: { message },
-      });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
-        }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
-      }
-    } catch (error) {
-      alert(error.message);
-    }
+  const onShare = async (hadith) => {
+    Share.share({
+      url: require("../assets/adaptive-icon.png"),
+      title: "الباحث في الحديث",
+      message: hadith,
+    });
   };
+
   return (
     <FlatList
       data={dataWithKey}
@@ -51,7 +42,13 @@ export default function MapList({ data }) {
             {item.grade}
           </Text>
           <View style={styles.share}>
-            <Pressable onPress={onShare}>
+            <Pressable
+              onPress={() =>
+                onShare(
+                  `${item.hadith}\nالراوي: ${item.el_rawi}\nالمحدث: ${item.el_mohdith}\nالمصدر: ${item.source}\nرفم الصفحة: ${item.number_or_page}\nدرجة الحديث: ${item.grade}`
+                )
+              }
+            >
               <Ionicons name="share-social" size={24} color="black" />
             </Pressable>
           </View>
@@ -98,10 +95,16 @@ export const styles = ScaledSheet.create({
     width: "90%",
   },
   share: {
+    justifyContent: "flex-end",
     position: "absolute", //Here is the trick
     bottom: 0,
-    margin: 10,
-    padding: 10,
+    margin: 0,
+    padding: 2,
+    height: 40,
+    width: 40,
+    left: 0,
+    borderTopRightRadius: 40,
+    backgroundColor: bleuPalette.bleu100, //"#5F5F5F",
     alignSelf: "flex-start",
   },
 });

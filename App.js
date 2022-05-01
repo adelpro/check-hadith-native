@@ -9,6 +9,7 @@ import {
   Tajawal_500Medium,
   Tajawal_800ExtraBold,
 } from "@expo-google-fonts/tajawal";
+
 import CustomDrawerNavigatorRight from "./components/CustomDrawerNavigatorRight";
 export default function App() {
   const [fontsLoaded] = useFonts({

@@ -7,10 +7,10 @@ import {
   Pressable,
   ActivityIndicator,
 } from "react-native";
-import { fetchDorarAPI } from "../utils/fetchDorarAPI";
 import { bleuPalette } from "../colors";
 import MapList from "../components/MapList";
 import jsonp from "jsonp";
+import fetchJsonp from "fetch-jsonp";
 export default function HomeScreen({ route }) {
   const font = route.params.font;
   const [skey, setSkey] = useState("");
@@ -63,6 +63,12 @@ export default function HomeScreen({ route }) {
       }
       return allHadithInfo;
     };
+    fetchJsonp(APIURI2)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => console.log(json));
+
     jsonp(APIURI2, null, function (err, data) {
       setIsLoading(true);
       if (err) {
@@ -135,6 +141,7 @@ export default function HomeScreen({ route }) {
   );
 }
 import { ScaledSheet } from "react-native-size-matters";
+import Helmet from "react-helmet";
 export const styles = ScaledSheet.create({
   container: {
     flex: 1,

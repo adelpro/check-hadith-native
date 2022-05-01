@@ -1,4 +1,4 @@
-import { Platform, Pressable, View, Text, Image } from "react-native";
+import { Platform, Pressable, View, Text, Image, Linking } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import AboutScreen from "../screens/AboutScreen";
 import { bleuPalette } from "../colors";
@@ -21,9 +21,45 @@ const CustomDrawerContent = (props) => {
         </View>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <View>
-        <Text>AAA</Text>
-      </View>
+
+      <Pressable>
+        <View
+          style={{
+            flexDirection: "row",
+            flex: 1,
+            padding: 20,
+            justifyContent: "center",
+          }}
+        >
+          <Ionicons
+            name="logo-twitter"
+            size={24}
+            color="black"
+            style={{ padding: 5 }}
+            onPress={() => {
+              Linking.openURL("https://twitter.com/adelpro");
+            }}
+          />
+          <Ionicons
+            name="logo-facebook"
+            size={24}
+            color="black"
+            style={{ padding: 5 }}
+            onPress={() => {
+              Linking.openURL("https://www.facebook.com/adel.benyahia");
+            }}
+          />
+          <Ionicons
+            name="logo-reddit"
+            size={24}
+            color="black"
+            style={{ padding: 5 }}
+            onPress={() => {
+              Linking.openURL("https://www.reddit.com/user/adelbenyahia");
+            }}
+          />
+        </View>
+      </Pressable>
     </View>
   );
 };
