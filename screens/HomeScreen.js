@@ -41,6 +41,8 @@ export default function HomeScreen({ route }) {
         setIsLoading(false);
       });
   }
+  console.log(data);
+  console.log(skey);
   return (
     <View style={styles.container}>
       <Text style={[styles.headerText, font.ExtraBold]}>الباحث في الحديث</Text>
@@ -87,9 +89,9 @@ export default function HomeScreen({ route }) {
           <Text>{error}</Text>
         ) : data.length > 0 ? (
           <MapList data={data} />
-        ) : (
-          <Text>"ليس هناك نتائج "</Text>
-        )}
+        ) : !data ? (
+          <Text>{"..."}</Text>
+        ) : null}
       </View>
     </View>
   );

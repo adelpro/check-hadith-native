@@ -59,7 +59,7 @@ const CustomDrawerContent = (props) => {
             }}
           />
         </View>
-        <Text>V1.3 build 0001</Text>
+        <Text style={{ textAlign: "center" }}>V1.3 build 0001</Text>
       </Pressable>
     </View>
   );
@@ -117,16 +117,7 @@ export default function CustomDrawerNavigatorRight(font) {
           title: "الباحث في الحديث",
           drawerIcon: ({ color, size, focuced }) => (
             <Ionicons
-              name={
-                focuced ? "home" : "home-outline"
-
-                /* Platform.OS === "android"
-                    ? "md-home"
-                    : "ios-home"
-                  : Platform.OS === "android"
-                  ? "md-home-outline"
-                  : "ios-home-outline" */
-              }
+              name={focuced ? "home" : "home-outline"}
               size={size}
               color={color}
               style={styles.screenIconStyle}
