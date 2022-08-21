@@ -20,7 +20,7 @@ Check hadith nabawi using dorar API.
 
 ✅ EXPO
 
-✅ Dorar API :modified to return a JSON result) thinks to [Ahmed El-tabarani](https://github.com/AhmedElTabarani/dorar-hadith-api) 
+✅ [Dorar API](https://www.dorar.net/article/389/%D8%AE%D8%AF%D9%85%D8%A9-%D9%88%D8%A7%D8%AC%D9%87%D8%A9-%D8%A7%D9%84%D9%85%D9%88%D8%B3%D9%88%D8%B9%D8%A9-%D8%A7%D9%84%D8%AD%D8%AF%D9%8A%D8%AB%D9%8A%D8%A9-API) :modified to return a JSON result) thinks to [Ahmed El-tabarani](https://github.com/AhmedElTabarani/dorar-hadith-api) 
 for the help)
 
 ✅ Firebase (hosting)
